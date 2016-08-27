@@ -51,9 +51,11 @@ void Bump2D::drawLight(int pozX, int pozY, float wspLight) {
 	sf::Color light, pixel;
 	float wsp = 1.0;
 
+	// zmienne do przechowania kolorów
 	float r, g, b;
 	int tr, tg, tb;
 
+	// przeleæ po ca³ej tablicy œwiat³a i uwzglêdnij t³o
 	for (int x = 0; x < maxLightSize; x++) {
 		for (int y = 0; y < maxLightSize; y++) {
 
@@ -68,6 +70,7 @@ void Bump2D::drawLight(int pozX, int pozY, float wspLight) {
 				g = (light.g / wspLight + tg) / wsp;
 				b = (light.b / wspLight + tb) / wsp;
 
+				// kolor nie mo¿e przekroczyæ 255, wiadomo
 				if (r > 255) r = 255;
 				if (g > 255) g = 255;
 				if (b > 255) b = 255;
@@ -99,6 +102,7 @@ void Bump2D::loadImage(std::string fileName, sf::Image &bitplaneImage, float dar
 	// wczytaj obrazek do tablicy
 	bitplaneImage.loadFromFile(fileName);
 
+	// przeleæ po ca³ym obrazku i spisz kolory do tablicy
 	sf::Color makeDarkerColor;
 	for (int x = 0; x < Width; x++) {
 		for (int y = 0; y < Height; y++) {
